@@ -9,9 +9,9 @@ User = get_user_model()
 
 
 class Gender(models.TextChoices):
-    MALE = "MALE", _("Male")
-    FEMALE = "FEMALE", _("Female")
-    OTHERS = "OTHERS", _("Others")
+    MALE = "Male", _("Male")
+    FEMALE = "Female", _("Female")
+    OTHER = "Other", _("Other")
 
 
 class Profile(TimeStampedUUIDModel):
@@ -20,7 +20,7 @@ class Profile(TimeStampedUUIDModel):
     about_me = models.TextField(verbose_name=_("About Me"),default="Say something about yourself")
     license = models.CharField(verbose_name=_("Real Estate License"), max_length=50, blank=True, null=True)
     profile_photo = models.ImageField(verbose_name=_("Profile Photo"), default="/profile_default.png")
-    gender = models.CharField(verbose_name=_("Gender"), choices=Gender.choices, default=Gender.OTHERS, max_length=20)
+    gender = models.CharField(verbose_name=_("Gender"), choices=Gender.choices, default=Gender.OTHER, max_length=20)
     country = CountryField(verbose_name=_("Country"), default="IND", blank=False, null=False)
     city = models.CharField(verbose_name=_("City"), max_length=180, default="Indore", blank=False, null=False)
     is_buyer = models.BooleanField(verbose_name=_("Buyer"), default=False, help_text="Are you looking to buy a Property ?")
